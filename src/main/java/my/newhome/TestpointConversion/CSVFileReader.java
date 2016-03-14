@@ -45,7 +45,7 @@ public class CSVFileReader {
         String[] lNextLine;
         String LocationName = "";
 
-        for(int i=0; i<700;i++)
+        for(int i=0; i<2600;i++)
         {
 
             lNextLine = lReader.readNext();

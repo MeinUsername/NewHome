@@ -64,6 +64,13 @@ public class ConvertTestpoint {
                 lLocation.setFormattedAddress(address);
                 xmlList.add(lLocation);     //new address
             }
+            else
+            {
+                lLocation.setCoordinates(new Coordinates(0.0,0.0));
+                lLocation.setFormattedAddress("InvalidPoint");
+                xmlList.add(lLocation);
+            }
+
 
 
         }
