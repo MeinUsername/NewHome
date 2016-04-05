@@ -1,6 +1,5 @@
-package my.newhome.TestpointConversion;
+package my.newhome.XMLFileHandling;
 
-import my.newhome.Models.Location;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
@@ -10,7 +9,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by Florian on 13.03.2016.
@@ -59,7 +57,7 @@ public class XmlFileReader {
 
         try
         {
-            this.setFileName(this.fileName);
+            this.setFileName(fileName);
             return this.readAsDocument();
 
         }

@@ -21,6 +21,45 @@ public class CoordinateCalculation {
     }
 
 
+    /**
+     * Calculates the distance between two Coordinates
+     *
+     * Adapted from: https://stackoverflow.com/questions/4656802/midpoint-between-two-latitude-and-longitude
+     * @param coord1
+     * @param coord1
+     * @return Coordiates
+     */
+    public static Coordinates getMidPoint(Coordinates coord1, Coordinates coord2){
+
+
+        double lat1 = coord1.getLatitude();
+        double lat2 = coord2.getLatitude();
+        double lon1 = coord1.getLongitude();
+        double lon2 = coord2.getLongitude();
+
+
+//        double lat1,double lon1,double lat2,double lon2
+        double dLon = Math.toRadians(lon2 - lon1);
+
+
+        //convert to radians
+        lat1 = Math.toRadians(lat1);
+        lat2 = Math.toRadians(lat2);
+        lon1 = Math.toRadians(lon1);
+
+        double Bx = Math.cos(lat2) * Math.cos(dLon);
+        double By = Math.cos(lat2) * Math.sin(dLon);
+        double lat3 = Math.atan2(Math.sin(lat1) + Math.sin(lat2), Math.sqrt((Math.cos(lat1) + Bx) * (Math.cos(lat1) + Bx) + By * By));
+        double lon3 = lon1 + Math.atan2(By, Math.cos(lat1) + Bx);
+
+        //print out in degrees
+
+        Coordinates result = new Coordinates(Math.toDegrees(lon3),Math.toDegrees(lat3));
+
+        return result;
+//        System.out.println(Math.toDegrees(lat3) + " " + Math.toDegrees(lon3));
+    }
+
 
     public static double getDistance(double lat1, double lng1, double lat2, double lng2, double earthRadius) {
 //        double earthRadius = 3958.75; // miles (or 6371.0 kilometers)
@@ -37,7 +76,7 @@ public class CoordinateCalculation {
 
 
 
-    public double getDistance(Coordinates coord1,  Coordinates coord2, Units unit)
+    public static double getDistance(Coordinates coord1,  Coordinates coord2, Units unit)
     {
         double earthradius = 6371.0; //km
         if ( unit == Units.Meter)
@@ -45,7 +84,8 @@ public class CoordinateCalculation {
             earthradius *= 1000.0;
         }
 
-        return getDistance(coord1.getLongitude(),coord2.getLongitude(),coord1.getLatitude(),coord2.getLatitude(),earthradius);
+//        return getDistance(coord1.getLongitude(),coord2.getLongitude(),coord1.getLatitude(),coord2.getLatitude(),earthradius);
+        return getDistance(coord1.getLatitude(),coord1.getLongitude(),coord2.getLatitude(),coord2.getLongitude(),earthradius);
 
     }
 

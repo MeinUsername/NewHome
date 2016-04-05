@@ -1,12 +1,11 @@
-package my.newhome.TestpointConversion;
+package my.newhome.XMLFileWrapper;
 
 import my.newhome.Models.Coordinates;
 import my.newhome.Models.Location;
+import my.newhome.XMLFileHandling.XmlFileReader;
+import my.newhome.XMLFileHandling.XmlFileWriter;
 import org.w3c.dom.*;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -21,8 +20,8 @@ public class LocationXMLWrapper {
     private static final String LOCATION_ELEMENT_ATTR_LONG = "LNG";
     private static final String LOCATION_ELEMENT_ATTR_ADDR = "ADDR";
     private static final String LOCATION_ELEMENT_ATTR_NAME = "NAME";
-    private  XmlFileWriter writer;
-    private  XmlFileReader reader;
+    private XmlFileWriter writer;
+    private XmlFileReader reader;
     private String fileName;
     private Document doc;
     private XmlFileReader xmlFileReader = null;

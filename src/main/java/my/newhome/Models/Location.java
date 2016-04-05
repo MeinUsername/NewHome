@@ -1,9 +1,11 @@
 package my.newhome.Models;
 
+import java.util.ArrayList;
+
 /**
  * Created by Florian on 12.03.2016.
  */
-public class Location {
+public class Location implements LocationInterface {
 
     private String name = "";
     private String formattedAddress = "";
@@ -17,6 +19,12 @@ public class Location {
         this.name = aName;
         this.init();
     }
+
+
+
+
+
+
 
     @Override
     public String toString() {
@@ -57,4 +65,7 @@ public class Location {
         this.name = name;
         return this;
     }
+
+
+
 }

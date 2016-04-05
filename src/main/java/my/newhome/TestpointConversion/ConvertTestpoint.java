@@ -1,9 +1,13 @@
 package my.newhome.TestpointConversion;
 
 import com.google.maps.model.GeocodingResult;
+import my.newhome.FileHandling.CSVFileReader;
 import my.newhome.GoogleMaps.GeoCoding;
 import my.newhome.Models.Coordinates;
 import my.newhome.Models.Location;
+import my.newhome.XMLFileHandling.XmlFileReader;
+import my.newhome.XMLFileHandling.XmlFileWriter;
+import my.newhome.XMLFileWrapper.LocationXMLWrapper;
 import my.newhome.config.Config;
 
 import java.io.IOException;
@@ -21,11 +25,11 @@ public class ConvertTestpoint {
     public ArrayList<Location> ConvertCSVFile(String aFileName, String outputFileName) throws IOException {
 
         Config config = new Config("config.ini");
+        String apiKey = config.getApiKey();
 
         XmlFileWriter xmlWriter = new XmlFileWriter();
         XmlFileReader xmlReader = new XmlFileReader();
         LocationXMLWrapper locationXMLWrapper = new LocationXMLWrapper(outputFileName, xmlWriter, xmlReader);
-        String apiKey = config.getApiKey();
         int rateLimit = 2500;
         try {
             locationXMLWrapper.parse();

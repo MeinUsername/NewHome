@@ -1,4 +1,4 @@
-package my.newhome.TestpointConversion;
+package my.newhome.FileHandling;
 
 import com.opencsv.CSVReader;
 import my.newhome.Models.Location;
@@ -37,7 +37,7 @@ public class CSVFileReader {
 
 
 
-    protected ArrayList<Location> ReadCSV() throws IOException {
+    public ArrayList<Location> ReadCSV() throws IOException {
         CSVReader lReader = new CSVReader(new FileReader(this.getFileName()),this.getCsvSepChar());
 
         ArrayList<Location> lResult = new ArrayList<Location>();
@@ -45,10 +45,15 @@ public class CSVFileReader {
         String[] lNextLine;
         String LocationName = "";
 
-        for(int i=0; i<2600;i++)
+        for(int i=0; i<29000;i++)
         {
 
+
             lNextLine = lReader.readNext();
+            if ( lNextLine == null)
+            {
+                break;
+            }
             LocationName = lNextLine[0];
             Location lNewLocation = new Location(LocationName);
             lResult.add(lNewLocation);
@@ -64,7 +69,7 @@ public class CSVFileReader {
     }
 
 
-    public char getCsvSepChar() {
+    private char getCsvSepChar() {
         return csvSepChar;
     }
 
